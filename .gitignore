@@ -45,3 +45,6 @@ next-env.d.ts
 
 # local verification artifacts
 /verify-output/
+
+# personal Claude Code settings
+.claude/settings.local.json
