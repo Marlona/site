@@ -1,10 +1,27 @@
-import { site } from "@/lib/content";
+import Hero from "@/components/sections/Hero";
+import Stats from "@/components/sections/Stats";
+import About from "@/components/sections/About";
+import Services from "@/components/sections/Services";
+import HostInterlude from "@/components/sections/HostInterlude";
+import Showcase from "@/components/sections/Showcase";
+import Transformation from "@/components/sections/Transformation";
+import Testimonials from "@/components/sections/Testimonials";
+import FinalCta from "@/components/sections/FinalCta";
+import Footer from "@/components/sections/Footer";
 
-// Placeholder home — replaced by the full cinematic section assembly.
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <h1 className="font-display text-editorial text-5xl font-light">{site.studio}</h1>
+    <main>
+      <Hero />
+      <Stats />
+      <About />
+      <Services />
+      <HostInterlude />
+      <Showcase />
+      <Transformation />
+      <Testimonials />
+      <FinalCta />
+      <Footer />
     </main>
   );
 }
