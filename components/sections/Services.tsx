@@ -51,7 +51,7 @@ export default function Services() {
 
         gsap.fromTo(
           el,
-          { opacity: 0.25, y: 32 },
+          { opacity: 0, y: 32 },
           {
             opacity: 1,
             y: 0,
@@ -72,7 +72,7 @@ export default function Services() {
         {/* Left: pinned index + blueprint room (desktop only) */}
         <div className="hidden md:block">
           <div className="sticky top-0 flex h-screen flex-col justify-center">
-            <p className="mono-caps mb-4 text-ink/50">Services</p>
+            <p className="mono-caps mb-4 text-ink/65">Services</p>
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -81,12 +81,12 @@ export default function Services() {
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.35, ease: [0.65, 0.05, 0, 1] }}
               >
-                <span className="font-display block text-[7rem] font-light leading-none text-stone-200">
+                <span aria-hidden className="font-display block text-[7rem] font-light leading-none text-oak">
                   {services[active].index}
                 </span>
-                <h3 className="font-display text-editorial mt-2 text-4xl font-light text-ink">
+                <h2 className="font-display text-editorial mt-2 text-4xl font-light text-ink">
                   {services[active].title}
-                </h3>
+                </h2>
               </motion.div>
             </AnimatePresence>
             <div className="mt-8 h-[340px] w-full">
@@ -97,11 +97,11 @@ export default function Services() {
 
         {/* Right: scrolling service groups */}
         <div className="py-24 md:py-[38vh]">
-          <p className="mono-caps mb-10 text-ink/50 md:hidden">Services</p>
+          <p className="mono-caps mb-10 text-ink/65 md:hidden">Services</p>
           <div className="space-y-24 md:space-y-[32vh]">
             {services.map((service) => (
               <article key={service.index} className="service-group">
-                <span className="font-display text-6xl font-light text-stone-200 md:hidden">
+                <span aria-hidden className="font-display text-6xl font-light text-oak md:hidden">
                   {service.index}
                 </span>
                 <h3 className="font-display text-editorial mt-2 text-3xl font-light text-ink md:text-4xl">

@@ -22,7 +22,7 @@ export default function About() {
         gsap.set(".about-bio", { opacity: 0, y: 48 });
 
         const splits = gsap.utils.toArray<HTMLElement>(".about-line").map(
-          (el) => new SplitText(el, { type: "words" }),
+          (el) => new SplitText(el, { type: "words", aria: "none" }),
         );
         splits.forEach((split) => gsap.set(split.words, { yPercent: 120, opacity: 0 }));
 
@@ -68,7 +68,8 @@ export default function About() {
           <ChapterMarker chapter={about.chapter} />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+        <p className="sr-only">{about.lines.join(" ")}</p>
+        <div aria-hidden className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           {about.lines.map((line) => (
             <p
               key={line}
@@ -81,7 +82,7 @@ export default function About() {
 
         <div className="about-bio glass absolute inset-x-6 bottom-8 z-20 mx-auto max-w-2xl rounded-2xl p-8 md:bottom-14 md:p-10">
           <p className="text-base leading-relaxed text-ink/85 md:text-lg">{about.bio}</p>
-          <p className="mono-caps mt-6 text-ink/55">{about.signature}</p>
+          <p className="mono-caps mt-6 text-ink/70">{about.signature}</p>
         </div>
       </div>
     </section>

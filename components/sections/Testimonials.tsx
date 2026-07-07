@@ -7,7 +7,7 @@ import { testimonials } from "@/lib/content";
 
 function Stars() {
   return (
-    <span className="testimonial-stars flex gap-1.5 text-ember" aria-label="Five stars">
+    <span role="img" className="testimonial-stars flex gap-1.5 text-ember" aria-label="Five stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
@@ -33,12 +33,13 @@ export default function Testimonials() {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         const splits: SplitText[] = [];
         gsap.utils.toArray<HTMLElement>(".testimonial").forEach((block) => {
-          const quote = block.querySelector<HTMLElement>(".testimonial-quote");
+          const quote = block.querySelector<HTMLElement>(".testimonial-quote-visual");
           if (!quote) return;
           const split = new SplitText(quote, {
             type: "lines",
             linesClass: "line",
             mask: "lines",
+            aria: "none",
           });
           splits.push(split);
 
@@ -70,15 +71,18 @@ export default function Testimonials() {
     <section ref={sectionRef} className="relative bg-parchment">
       <GridLines />
       <div className="relative mx-auto max-w-5xl px-6 py-24 md:py-36">
-        <p className="mono-caps mb-16 text-ink/50">What clients say</p>
+        <p className="mono-caps mb-16 text-ink/65">What clients say</p>
         <div className="space-y-24 md:space-y-32">
           {testimonials.map((testimonial) => (
             <figure key={testimonial.quote} className="testimonial">
               <Stars />
               <blockquote className="testimonial-quote font-display text-editorial mt-6 text-[clamp(1.9rem,4.5vw,3.75rem)] font-light text-ink">
-                “{testimonial.quote}”
+                <span className="sr-only">“{testimonial.quote}”</span>
+                <span aria-hidden className="testimonial-quote-visual block">
+                  “{testimonial.quote}”
+                </span>
               </blockquote>
-              <figcaption className="mono-caps mt-6 text-ink/50">
+              <figcaption className="mono-caps mt-6 text-ink/65">
                 {testimonial.attribution}
               </figcaption>
             </figure>

@@ -19,7 +19,7 @@ export default function Hero() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const split = new SplitText(".hero-line-inner", { type: "chars" });
+        const split = new SplitText(".hero-line-inner", { type: "chars", aria: "none" });
         gsap.set(split.chars, { yPercent: 120 });
 
         const tl = gsap.timeline({
@@ -72,14 +72,17 @@ export default function Hero() {
               <ChapterMarker chapter={hero.chapter} dark />
             </div>
             <h1 className="font-display text-editorial max-w-5xl font-light text-ivory">
-              {hero.headline.map((line) => (
-                <span
-                  key={line}
-                  className="block overflow-hidden text-[clamp(2.6rem,8vw,7rem)]"
-                >
-                  <span className="hero-line-inner block">{line}</span>
-                </span>
-              ))}
+              <span className="sr-only">{hero.headline.join(" ")}</span>
+              <span aria-hidden>
+                {hero.headline.map((line) => (
+                  <span
+                    key={line}
+                    className="block overflow-hidden text-[clamp(2.6rem,8vw,7rem)]"
+                  >
+                    <span className="hero-line-inner block">{line}</span>
+                  </span>
+                ))}
+              </span>
             </h1>
 
             <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

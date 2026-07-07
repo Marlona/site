@@ -19,7 +19,7 @@ export default function FinalCta() {
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const split = new SplitText(".cta-headline", { type: "words" });
+        const split = new SplitText(".cta-headline-visual", { type: "words", aria: "none" });
         gsap.set(split.words, { yPercent: 120, opacity: 0 });
 
         const tl = gsap.timeline({
@@ -66,7 +66,10 @@ export default function FinalCta() {
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
           <ChapterMarker chapter={finalCta.chapter} dark />
           <h2 className="cta-headline font-display text-editorial mt-8 max-w-4xl text-[clamp(2.75rem,8vw,7rem)] font-light text-ivory">
-            {finalCta.headline}
+            <span className="sr-only">{finalCta.headline}</span>
+            <span aria-hidden className="cta-headline-visual block">
+              {finalCta.headline}
+            </span>
           </h2>
           <p className="cta-copy mt-8 max-w-lg text-ivory/75">{finalCta.copy}</p>
           <div className="cta-actions mt-12 flex flex-col items-center gap-4 sm:flex-row">

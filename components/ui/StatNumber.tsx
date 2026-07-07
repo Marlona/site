@@ -49,7 +49,7 @@ export default function StatNumber({ stat }: { stat: Stat }) {
       >
         {format(0, stat)}
       </span>
-      <span className="mono-caps mt-3 block text-ink/55">{stat.label}</span>
+      <span className="mono-caps mt-3 block text-ink/70">{stat.label}</span>
     </div>
   );
 }

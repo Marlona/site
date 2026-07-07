@@ -74,7 +74,7 @@ export default function HoverCard({ project }: { project: Project }) {
         variants={{ rest: { y: 0 }, hover: { y: -4 } }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
-        <p className="mono-caps flex items-center justify-between text-ink/50">
+        <p className="mono-caps flex items-center justify-between text-ink/65">
           <span>{project.location}</span>
           <span>{project.type}</span>
         </p>
