@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "media:placeholders": "node scripts/make-placeholders.mjs",
+    "media:frames": "node scripts/extract-frames.mjs",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
