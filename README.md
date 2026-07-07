@@ -42,8 +42,9 @@ style — `<video>.currentTime` scrubbing is keyframe-quantized and janky).
 
 ### Swapping in real footage
 
-The current sequences are **procedural placeholders**. To replace them with
-real (or AI-generated) footage:
+The committed sequences and stills are **AI-generated via Higgsfield**
+(Seedance 2.0 clips with Andrea's photos as identity references; interior
+stills via Nano Banana Pro). To swap in new footage:
 
 ```bash
 # drop 16:9 mp4s named visionary.mp4 / designer.mp4 / host.mp4 / operator.mp4 into:
@@ -55,6 +56,11 @@ No code changes needed — components only read the manifests. The same applies
 to showcase/before-after stills: overwrite the files under
 `public/images/projects/` and `public/images/before-after/` (paths are listed
 in `lib/content.ts`).
+
+If working from an environment whose egress can't reach the media host,
+commit the download URLs to `media/request.json` instead — the
+`media-sync` GitHub Actions workflow downloads them, runs the extraction,
+and commits the derived assets back to the branch.
 
 ## Content TODOs (client to confirm)
 
@@ -76,5 +82,6 @@ All copy lives in **`lib/content.ts`** — every item below is marked
 states, screenshots each to `verify-output/`, fails on any console error, and
 asserts the hero canvas painted frames and the stats reached final values.
 
-Last audit (production build, Lighthouse 12): desktop **100 perf / 96 a11y /
-100 bp / 100 seo**, mobile **91 perf / 95 a11y / 100 bp / 100 seo**, CLS 0.
+Last audit (production build with AI footage, Lighthouse 12): desktop
+**100 perf / 96 a11y / 100 bp / 100 seo**, mobile **93 perf / 95 a11y /
+100 bp / 100 seo**, LCP 0.6s desktop / 2.7s mobile, CLS 0.
